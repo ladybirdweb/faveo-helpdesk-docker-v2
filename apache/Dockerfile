@@ -7,6 +7,10 @@ RUN apt update && apt -y install unzip wget git nano mariadb-client \
 
 RUN echo "max_execution_time = 300" > /usr/local/etc/php/php.ini
 
+RUN echo "upload_max_filesize = 100M" >> /usr/local/etc/php/php.ini
+
+RUN echo "post_max_size = 100M" >> /usr/local/etc/php/php.ini
+
 RUN docker-php-ext-install pdo_mysql zip mysqli bcmath ldap soap gd pcntl
 
 RUN pecl install redis && docker-php-ext-enable redis
