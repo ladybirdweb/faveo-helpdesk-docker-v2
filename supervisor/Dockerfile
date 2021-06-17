@@ -4,6 +4,12 @@ RUN apt update && apt -y install unzip wget git nano supervisor \
                       libc-client-dev libkrb5-dev libzip-dev zlib1g-dev \
                       libldb-dev libldap2-dev libxml2-dev libxml2-dev libpng-dev && \
                       rm -r /var/lib/apt/lists/*
+                      
+RUN echo "max_execution_time = 300" > /usr/local/etc/php/php.ini
+
+RUN echo "upload_max_filesize = 100M" >> /usr/local/etc/php/php.ini
+
+RUN echo "post_max_size = 100M" >> /usr/local/etc/php/php.ini
 
 RUN docker-php-ext-install pdo_mysql zip mysqli bcmath ldap soap gd pcntl
 
