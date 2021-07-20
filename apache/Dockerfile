@@ -12,7 +12,7 @@ RUN echo "upload_max_filesize = 100M" >> /usr/local/etc/php/php.ini
 
 RUN echo "post_max_size = 100M" >> /usr/local/etc/php/php.ini
 
-RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/>
+RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr
 
 RUN docker-php-ext-install pdo_mysql zip mysqli bcmath ldap soap gd pcntl
 
