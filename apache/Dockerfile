@@ -2,7 +2,7 @@ FROM php:7.3-apache
 
 RUN apt update && apt -y install unzip wget git nano mariadb-client \
                       libc-client-dev libkrb5-dev libzip-dev zlib1g-dev \
-                      libldb-dev libldap2-dev libxml2-dev libxml2-dev libpng-dev \
+                      libldb-dev libldap2-dev libxml2-dev libpng-dev \
                       libjpeg-dev libjpeg62-turbo-dev && \
                       rm -r /var/lib/apt/lists/*
 
