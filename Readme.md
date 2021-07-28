@@ -35,8 +35,8 @@ Visit https://<yourdomainname> complete the readiness probe, input the Database 
 There is one final step needs to be done in order complete the installation. You have to edit the .env file which is generated in the Faveo root directory after completing the installation in browser. Open terminal and navigate to the faveo-docker directory here you will find the directory "faveo" which is downloaded while running the script this directory contains all the Helpdesk codebase, inside it you need to edit the ".env" file and update the "Redis Host" value to "redis" by default it will be pointing to loopback address "127.0.0.1" here redis is the DNS name of redis container which will be resolved by the docker daemon.
 	
 Configure Cronjob for Auto Renwal of SSL Certificates:
-- Replace the path, email and domain name accoringly that suits yours.
+- Replace the path, email and domain name accordingly that suits yours.
 ```sh
-	echo "45 2 * * 6 docker run -ti --rm -v /root/faveo-helpdesk-docker-v2/certbot/letsencrypt/etc/letsencrypt:/etc/letsencrypt -v /root/faveo-helpdesk-docker-v2/certbot/html:/data/letsencrypt --name certbot certbot/certbot certonly --webroot --email berserker@gmail.com  --agree-tos --non-interactive  --no-eff-email --webroot-path=/data/letsencrypt -d berserker.tk  >/dev/null 2>&1" | sudo tee /etc/cron.d/faveo-docker-ssl 
+	45 2 * * 6 docker run -ti --rm -v /root/faveo-helpdesk-docker-v2/certbot/letsencrypt/etc/letsencrypt:/etc/letsencrypt -v /root/faveo-helpdesk-docker-v2/certbot/html:/data/letsencrypt --name certbot certbot/certbot certonly --webroot --email berserker@gmail.com  --agree-tos --non-interactive  --no-eff-email --webroot-path=/data/letsencrypt -d berserker.tk  >/dev/null 2>&1 
 ```
 
