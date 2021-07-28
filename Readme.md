@@ -37,6 +37,6 @@ There is one final step needs to be done in order complete the installation. You
 Configure Cronjob for Auto Renwal of SSL Certificates:
 - Replace the path, email and domain name accoringly that suits yours.
 ```sh
-	45 2 * * 6 docker run -ti --rm -v /root/faveo-helpdesk-docker-v2/certbot/letsencrypt/etc/letsencrypt:/etc/letsencrypt -v /root/faveo-helpdesk-docker-v2/certbot/html:/data/letsencrypt --name certbot certbot/certbot certonly --webroot --email berserker@gmail.com  --agree-tos --non-interactive  --no-eff-email --webroot-path=/data/letsencrypt -d berserker.tk
+	echo "45 2 * * 6 docker run -ti --rm -v /root/faveo-helpdesk-docker-v2/certbot/letsencrypt/etc/letsencrypt:/etc/letsencrypt -v /root/faveo-helpdesk-docker-v2/certbot/html:/data/letsencrypt --name certbot certbot/certbot certonly --webroot --email berserker@gmail.com  --agree-tos --non-interactive  --no-eff-email --webroot-path=/data/letsencrypt -d berserker.tk  >/dev/null 2>&1" | sudo tee /etc/cron.d/faveo-docker-ssl 
 ```
 
