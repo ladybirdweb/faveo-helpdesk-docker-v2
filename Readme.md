@@ -1,8 +1,15 @@
-Only the following Editions of Faveo-Helpdesk are supported Freelancer, Paid and Enterprise.
+## Faveo Helpdesk Docker
 
-Complete the below steps to get the Faveo-Helpdesk Containers up.
+A pretty simplified Docker Compose workflow that sets up a network of containers for Faveo Helpdesk.
 
-Provide executable permission to faveo-run.sh
+All the Faveo Helpdesk editions are supported except the community edition.
+
+## Usage
+___
+
+To get started, make sure you have Docker and docker-compose installed on your system, and then clone this repository.
+
+Next, navigate in your terminal to the directory you cloned this, and give the executable permission to faveo-run.sh bash script.
 
 ```sh
 chmod +x faveo-run.sh
@@ -10,15 +17,17 @@ chmod +x faveo-run.sh
 
 Prerequisites to run the script:
 
-1. A valid domain name fully propagated to you Server's IP.
+1. A valid domain name fully propagated to your Server's IP.
 2. Sudo Privilege.
 3. Faveo license and Order number.
 4. Unreserved ports 80 and 443.(If it is reserved feel free to edit and change the ports of your choice in docker-copompose.yml)
 5. Operating Systems Centos 7,8 or above and Ubuntu 16,18,20.
 
+Complete the below steps to get the Containers up.
+
 Run the script "faveo-run.sh" with sudo privilege by passing the necessary arguments.
 
-Note: You should have a Valid domain name pointing to your public IP. Since this domainname is used to obtain SSL Certificates from Let's Encrypt CA and the Email is used for the same process.The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, make sure not to include the '#' character from Order Number. 
+Note: You should have a Valid domain name pointing to your public IP. Since this domainname is used to obtain SSL Certificates from Let's Encrypt CA and the Email is used for the same process.The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, make sure not to include the '#' character in the Order Number. 
 
 Usage:
 ```sh
@@ -26,7 +35,7 @@ Usage:
 ```
 Example: It should look something like this.
 ```sh
-      sudo ./faveo-run.sh -domainname berserker.tk -email berserkertest@gmail.com -license 5H876HHDGDIBK0000 -orderno 81230569
+      sudo ./faveo-run.sh -domainname berserker.tk -email berserkertest@gmail.com -license 5H876********** -orderno 8123******
 ```
 After the docker installation completed you will be prompted with Database Credentials please copy and save them somewhere safe.
 
