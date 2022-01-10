@@ -27,7 +27,8 @@ Complete the below steps to get the Containers up.
 
 Run the script "faveo-run.sh" with sudo privilege by passing the necessary arguments.
 
-Note: You should have a Valid domain name pointing to your public IP. Since this domainname is used to obtain SSL Certificates from Let's Encrypt CA and the Email is used for the same process.The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, make sure not to include the '#' character in the Order Number. 
+Note: You should have a Valid domain name pointing to your public IP. Since this domain name is used to obtain SSL certificates from Let's Encrypt CA and the Email is used for the same process. The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, make sure not to include the '#' character in the Order Number.
+
 
 Usage:
 ```sh
@@ -37,11 +38,11 @@ Example: It should look something like this.
 ```sh
       sudo ./faveo-run.sh -domainname berserker.tk -email berserkertest@gmail.com -license 5H876********** -orderno 8123******
 ```
-After the docker installation completed you will be prompted with Database Credentials please copy and save them somewhere safe.
+After the docker installation is completed you will be prompted with Database Credentials please copy and save them somewhere safe.
 
 Visit https://<yourdomainname> complete the readiness probe, input the Database Details when prompted and complete the installation.
 
-There is one final step needs to be done in order complete the installation. You have to edit the .env file which is generated in the Faveo root directory after completing the installation in browser. Open terminal and navigate to the faveo-docker directory here you will find the directory "faveo" which is downloaded while running the script this directory contains all the Helpdesk codebase, inside it you need to edit the ".env" file and update the "Redis Host" value to "redis" by default it will be pointing to loopback address "127.0.0.1" here redis is the DNS name of redis container which will be resolved by the docker daemon.
+There is one final step that needs to be done in order to complete the installation. You have to edit the .env file which is generated in the Faveo root directory after completing the installation in the browser. Open terminal and navigate to the faveo-docker directory here you will find the directory "faveo" which is downloaded while running the script this directory contains all the Helpdesk codebase, inside it you need to edit the ".env" file and update the "Redis Host" value to "redis" by default it will be pointing to loopback address "127.0.0.1" here Redis is the DNS name of Redis container which will be resolved by the docker daemon.
 	
 Configure Cronjob for Auto Renwal of SSL Certificates:
 - Replace the path, email and domain name accordingly that suits yours.
