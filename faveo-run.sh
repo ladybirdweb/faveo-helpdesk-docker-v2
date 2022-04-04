@@ -172,7 +172,7 @@ if [[ $? -eq 0 ]]; then
     echo "Please save the following credentials."
     echo "Database Hostname: mariadb"
     echo "Mysql Database root password: $db_root_pw"
-    echo "Faveo Helpdesk name: $db_name"
+    echo "Faveo Helpdesk DB Name: $db_name"
     echo "Faveo Helpdesk DB User: $db_user"
     echo "Faveo Helpdesk DB Password: $db_user_pw"
     echo -e "\n"
