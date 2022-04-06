@@ -45,8 +45,8 @@ services:
       ports:
         - "9001:9001"
       depends_on:
-        - redis
-        - mariadb
+        - faveo-redis
+        - faveo-mariadb
       networks:
         faveo-network:
           ipv4_address: 172.24.2.4
