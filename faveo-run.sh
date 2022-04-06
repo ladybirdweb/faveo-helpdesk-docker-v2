@@ -1,5 +1,53 @@
 #!/bin/bash
 
+# Colour variables for the script.
+red=`tput setaf 1`
+
+green=`tput setaf 2`
+
+yellow=`tput setaf 11`
+
+skyblue=`tput setaf 14`
+
+white=`tput setaf 15`
+
+reset=`tput sgr0`
+
+# Faveo Banner.
+
+echo -e "$skyblue                                                                                                                    $reset"
+sleep 0.05
+echo -e "$skyblue                                   _______ _______ _     _ _______ _______                                          $reset"
+sleep 0.05
+echo -e "$skyblue                                  (_______|_______|_)   (_|_______|_______)                                         $reset"
+sleep 0.05
+echo -e "$skyblue                                   _____   _______ _     _ _____   _     _                                          $reset"
+sleep 0.05
+echo -e "$skyblue                                  |  ___) |  ___  | |   | |  ___) | |   | |                                         $reset"
+sleep 0.05
+echo -e "$skyblue                                  | |     | |   | |\ \ / /| |_____| |___| |                                         $reset"
+sleep 0.05
+echo -e "$skyblue                                  |_|     |_|   |_| \___/ |_______)\_____/                                          $reset"
+sleep 0.05
+echo -e "$skyblue                                                                                                                    $reset"
+sleep 0.05
+echo -e "$skyblue                          _     _ _______ _       ______ ______  _______  ______ _     _                            $reset"
+sleep 0.05
+echo -e "$skyblue                        (_)   (_|_______|_)     (_____ (______)(_______)/ _____|_)   | |                            $reset"
+sleep 0.05
+echo -e "$skyblue                         _______ _____   _       _____) )     _ _____  ( (____  _____| |                            $reset"
+sleep 0.05
+echo -e "$skyblue                        |  ___  |  ___) | |     |  ____/ |   | |  ___)  \____ \|  _   _)                            $reset"
+sleep 0.05
+echo -e "$skyblue                        | |   | | |_____| |_____| |    | |__/ /| |_____ _____) ) |  \ \                             $reset"
+sleep 0.05
+echo -e "$skyblue                        |_|   |_|_______)_______)_|    |_____/ |_______|______/|_|   \_)                            $reset"
+sleep 0.05
+echo -e "$skyblue                                                                                                                    $reset"
+sleep 0.05
+echo -e "$skyblue                                                                                                                    $reset"
+                                                                                        
+
 if [[ $# -lt 8 ]]; then
     echo "Please run the script by passing all the required arguments."
     exit 1;
