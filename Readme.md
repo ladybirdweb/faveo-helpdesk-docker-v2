@@ -38,15 +38,15 @@ Example: It should look something like this.
 ```sh
       sudo ./faveo-run.sh -domainname berserker.tk -email berserkertest@gmail.com -license 5H876********** -orderno 8123******
 ```
-After the docker installation is completed you will be prompted with Database Credentials please copy and save them somewhere safe.
+After the docker installation is completed you will be prompted with Database Credentials please copy and save them somewhere safe and a cronjob will be set to auto-renew SSL certificates from Letsencrypt
 
 Visit https://<yourdomainname> complete the readiness probe, input the Database Details when prompted and complete the installation.
 
-There is one final step that needs to be done in order to complete the installation. You have to edit the .env file which is generated in the Faveo root directory after completing the installation in the browser. Open terminal and navigate to the faveo-docker directory here you will find the directory "faveo" which is downloaded while running the script this directory contains all the Helpdesk codebase, inside it you need to edit the ".env" file and update the "Redis Host" value to "redis" by default it will be pointing to loopback address "127.0.0.1" here Redis is the DNS name of Redis container which will be resolved by the docker daemon.
-	
-Configure Cronjob for Auto Renwal of SSL Certificates:
-- Replace the path, email and domain name accordingly that suits yours.
+There is one final step that needs to be done in order to complete the installation. You have to edit the .env file which is generated under the Faveo root directory after completing the installation in the browser. Open terminal and navigate to the faveo-docker directory here you will find the directory "faveo" which is downloaded while running the script this directory contains all the Helpdesk codebase, inside it you need to edit the ".env" file and add REDIS_HOST=faveo-redis. The "faveo-redis" is the DNS name of the Redis container. Finally run the below command for changes to take effect.
 ```sh
-	45 2 * * 6 docker run -ti --rm -v /root/faveo-helpdesk-docker-v2/certbot/letsencrypt/etc/letsencrypt:/etc/letsencrypt -v /root/faveo-helpdesk-docker-v2/certbot/html:/data/letsencrypt --name certbot certbot/certbot certonly --webroot --email berserker@gmail.com  --agree-tos --non-interactive  --no-eff-email --webroot-path=/data/letsencrypt -d berserker.tk  >/dev/null 2>&1 
+	docker-compose down && docker-compose up -d
 ```
+	
+
+
 
