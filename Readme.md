@@ -25,18 +25,18 @@ Prerequisites to run the script:
 
 Complete the below steps to get the Containers up.
 
-Run the script "faveo-run.sh" with sudo privilege by passing the necessary arguments.
+Run the script "faveo-run.sh" by passing the necessary arguments.
 
 Note: You should have a Valid domain name pointing to your public IP. Since this domain name is used to obtain SSL certificates from Let's Encrypt CA and the Email is used for the same process. The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, make sure not to include the '#' character in the Order Number.
 
 
 Usage:
 ```sh
-	sudo ./faveo-run.sh -domainname <your domainname> -email <example@email.com> -license <faveo license code> -orderno <faveo order number>
+ ./faveo-run.sh -domainname <your domainname> -email <example@email.com> -license <faveo license code> -orderno <faveo order number>
 ```
 Example: It should look something like this.
 ```sh
-      sudo ./faveo-run.sh -domainname berserker.tk -email berserkertest@gmail.com -license 5H876********** -orderno 8123******
+ ./faveo-run.sh -domainname berserker.tk -email berserkertest@gmail.com -license 5H876********** -orderno 8123******
 ```
 After the docker installation is completed you will be prompted with Database Credentials please copy and save them somewhere safe and a cronjob will be set to auto-renew SSL certificates from Letsencrypt
 
