@@ -1,13 +1,11 @@
 version: "3.2"
 services:
-  apache:
-    build: 
-      context: ./apache
-    image: ${DOMAINNAME}/apache:2.4
+  faveo-apache:
+    image: ladybird/faveo-apache-v2
     container_name: ${DOMAINNAME}-apache
     networks:
-      - frontend
-      - backend
+      faveo-network:
+         ipv4_address: 172.24.2.1
     ports:
       - "80:80"
       - "443:443"
@@ -18,28 +16,29 @@ services:
       - ${CUR_DIR}/certbot/letsencrypt/etc/letsencrypt/live/${DOMAINNAME}/privkey.pem:/var/imported/ssl/privkey.pem
       - ${CUR_DIR}/certbot/letsencrypt/etc/letsencrypt/live/${DOMAINNAME}/fullchain.pem:/var/imported/ssl/fullchain.pem
     restart: always
-  mariadb:
+  faveo-mariadb:
     image: mariadb:10.3
     container_name: ${DOMAINNAME}-mariadb
     volumes:
       - db-volume:/var/lib/mysql
     networks:
-      - backend
+      faveo-network:
+         ipv4_address: 172.24.2.2
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     restart: on-failure
-  redis:
+  faveo-redis:
       image: redis
       container_name: ${DOMAINNAME}-redis
       restart: always
       networks:
-        - backend
-  supervisor:
-      build: './supervisor/'
-      image: ${DOMAINNAME}/supervisor:7.3
+        faveo-network:
+          ipv4_address: 172.24.2.3
+  faveo-supervisor:
+      image: ladybird/faveo-supervisor-v2
       container_name: ${DOMAINNAME}-supervisor
       volumes:
         - ./${HOST_ROOT_DIR}/:/var/www/html/
@@ -49,7 +48,8 @@ services:
         - redis
         - mariadb
       networks:
-        - backend
+        faveo-network:
+          ipv4_address: 172.24.2.4
       restart: on-failure
 volumes:
   db-volume:
@@ -57,9 +57,6 @@ volumes:
       name: ${DOMAINNAME}-faveoDB
   
 networks:
-  frontend:
-    external:
-      name: ${DOMAINNAME}-frontend
-  backend:
-    external:
-      name: ${DOMAINNAME}-backend
+    faveo-network:
+      external:
+        name: ${DOMAINNAME}-faveo
