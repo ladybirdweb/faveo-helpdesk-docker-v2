@@ -1,51 +1,4 @@
 #!/bin/bash
-# Colour variables for the script.
-red=`tput setaf 1`
-
-green=`tput setaf 2`
-
-yellow=`tput setaf 11`
-
-skyblue=`tput setaf 14`
-
-white=`tput setaf 15`
-
-reset=`tput sgr0`
-
-# Faveo Banner.
-
-echo -e "$skyblue                                                                                                                    $reset"
-sleep 0.05
-echo -e "$skyblue                                   _______ _______ _     _ _______ _______                                          $reset"
-sleep 0.05
-echo -e "$skyblue                                  (_______|_______|_)   (_|_______|_______)                                         $reset"
-sleep 0.05
-echo -e "$skyblue                                   _____   _______ _     _ _____   _     _                                          $reset"
-sleep 0.05
-echo -e "$skyblue                                  |  ___) |  ___  | |   | |  ___) | |   | |                                         $reset"
-sleep 0.05
-echo -e "$skyblue                                  | |     | |   | |\ \ / /| |_____| |___| |                                         $reset"
-sleep 0.05
-echo -e "$skyblue                                  |_|     |_|   |_| \___/ |_______)\_____/                                          $reset"
-sleep 0.05
-echo -e "$skyblue                                                                                                                    $reset"
-sleep 0.05
-echo -e "$skyblue                          _     _ _______ _       ______ ______  _______  ______ _     _                            $reset"
-sleep 0.05
-echo -e "$skyblue                        (_)   (_|_______|_)     (_____ (______)(_______)/ _____|_)   | |                            $reset"
-sleep 0.05
-echo -e "$skyblue                         _______ _____   _       _____) )     _ _____  ( (____  _____| |                            $reset"
-sleep 0.05
-echo -e "$skyblue                        |  ___  |  ___) | |     |  ____/ |   | |  ___)  \____ \|  _   _)                            $reset"
-sleep 0.05
-echo -e "$skyblue                        | |   | | |_____| |_____| |    | |__/ /| |_____ _____) ) |  \ \                             $reset"
-sleep 0.05
-echo -e "$skyblue                        |_|   |_|_______)_______)_|    |_____/ |_______|______/|_|   \_)                            $reset"
-sleep 0.05
-echo -e "$skyblue                                                                                                                    $reset"
-sleep 0.05
-echo -e "$skyblue                                                                                                                    $reset"
-                                                                                        
 
 if [[ $# -lt 8 ]]; then
     echo "Please run the script by passing all the required arguments."
@@ -56,10 +9,41 @@ echo "Checking Prerequisites....."
 setenforce 0
 apt update; apt install unzip curl -y || yum install unzip curl -y
 
+DockerVersion=$(docker --version)
+
+if [[ $? != 0 ]]; then
+echo -e "\n";
+echo -e "Docker is not found in this server, Please install Docker and try again."
+echo -e "\n";
+exit 1;
+else 
+echo -e "\n";
+echo $DockerVersion
+echo -e "\n";
+fi
+
+DockerComposeVersion=$(docker-compose --version)
+
+if [[ $? != 0 ]]; then
+echo -e "\n";
+echo -e "Docker Compose is not found in this server please install Docker Compose and try again."
+echo -e "\n";
+exit 1;
+else 
+echo -e "\n";
+echo $DockerComposeVersion
+echo -e "\n";
+fi
+
 if [[ $? -eq 0 ]]; then
+
+    echo  -e "\n";
     echo "Prerequisites check completed."
+    echo -e "\n";
 else
+    echo -e "\n";
     echo "Check failed please make sure to execute the script as sudo user and also check your Internet connectivity."
+    echo  -e "\n";
     exit 1;
 fi
 CUR_DIR=$(pwd)
@@ -139,6 +123,7 @@ else
     exit 1;
 fi;
 
+echo -e "\n";
 echo "Downloading Faveo Helpdesk"
 
 curl https://billing.faveohelpdesk.com/download/faveo\?order_number\=$orderno\&serial_key\=$license --output faveo.zip
@@ -151,12 +136,17 @@ else
     exit 1;
 fi;
 
+echo -e "\n";
+echo "Extracting please wait ..."
+echo -e "\n";
 if [ ! -d $CUR_DIR/$host_root_dir ]; then
-    unzip faveo.zip -d $host_root_dir
+    unzip -q faveo.zip -d $host_root_dir
 else
     rm -rf $CUR_DIR/$host_root_dir
-    unzip faveo.zip -d $host_root_dir
+    unzip -q faveo.zip -d $host_root_dir
 fi
+
+echo "Extracted"
 
 if [ $? -eq 0 ]; then
     chown -R 33:33 $host_root_dir
@@ -193,22 +183,19 @@ if [[ $? -eq 0 ]]; then
     docker volume create --name ${domainname}-faveoDB
 fi
 
+docker network rm ${domainname}-faveo
+
+docker network create ${domainname}-faveo --driver=bridge --subnet=172.24.2.0/16
+
 if [[ $? -eq 0 ]]; then
-    docker network create ${domainname}-frontend
-    docker network create ${domainname}-backend
-
+    echo " Faveo Docker Network ${domainname}-faveo Created"
 else
-     echo "Docker volume creation failed."
-     exit 1;
+    echo " Faveo Docker Network Creation failed"
+    exit 1;
 fi
-
-
 
 if [[ $? -eq 0 ]]; then
     docker-compose up -d
-else
-    echo "Docker Network  Creation Failed"
-    exit 1;
 fi
 
 if [[ $? -eq 0 ]]; then
@@ -217,9 +204,9 @@ if [[ $? -eq 0 ]]; then
     echo -e "\n"
     echo "Faveo Docker installed successfully. Visit https://$domainname from your browser."
     echo "Please save the following credentials."
-    echo "Database Hostname: faveo-mariadb"
+    echo "Database Hostname: mariadb"
     echo "Mysql Database root password: $db_root_pw"
-    echo "Faveo Helpdesk DB Name: $db_name"
+    echo "Faveo Helpdesk name: $db_name"
     echo "Faveo Helpdesk DB User: $db_user"
     echo "Faveo Helpdesk DB Password: $db_user_pw"
     echo -e "\n"
@@ -228,3 +215,4 @@ else
     echo "Script Failed unknown error."
     exit 1;
 fi
+
