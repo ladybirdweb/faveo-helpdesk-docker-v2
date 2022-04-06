@@ -251,7 +251,7 @@ if [[ $? -eq 0 ]]; then
     echo -e "\n"
     echo "Faveo Docker installed successfully. Visit https://$domainname from your browser."
     echo "Please save the following credentials."
-    echo "Database Hostname: mariadb"
+    echo "Database Hostname: faveo-mariadb"
     echo "Mysql Database root password: $db_root_pw"
     echo "Faveo Helpdesk name: $db_name"
     echo "Faveo Helpdesk DB User: $db_user"
