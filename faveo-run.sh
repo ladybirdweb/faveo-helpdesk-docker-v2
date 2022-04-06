@@ -146,12 +146,11 @@ else
     unzip -q faveo.zip -d $host_root_dir
 fi
 
-echo "Extracted"
-
 if [ $? -eq 0 ]; then
     chown -R 33:33 $host_root_dir
     find $host_root_dir -type d -exec chmod 755 {} \;
     find $host_root_dir -type f -exec chmod 644 {} \;
+    echo "Extracted"
 else
     echo "Extract failure."
 fi
