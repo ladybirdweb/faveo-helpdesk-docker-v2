@@ -40,7 +40,7 @@ Example: It should look something like this.
 ```
 After the docker installation is completed you will be prompted with Database Credentials please copy and save them somewhere safe and a cronjob will be set to auto-renew SSL certificates from Letsencrypt
 
-Visit https://<yourdomainname> complete the readiness probe, input the Database Details when prompted and complete the installation.
+Visit https://yourdomainname complete the readiness probe, input the Database Details when prompted and complete the installation.
 
 There is one final step that needs to be done in order to complete the installation. You have to edit the .env file which is generated under the Faveo root directory after completing the installation in the browser. Open terminal and navigate to the faveo-docker directory here you will find the directory "faveo" which is downloaded while running the script this directory contains all the Helpdesk codebase, inside it you need to edit the ".env" file and add REDIS_HOST=faveo-redis. The "faveo-redis" is the DNS name of the Redis container. Finally run the below command for changes to take effect.
 ```sh
