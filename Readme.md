@@ -1,15 +1,15 @@
 ## Faveo Helpdesk Docker
 
-A pretty simplified Docker Compose workflow that sets up a network of containers for Faveo Helpdesk.
-
-All the Faveo Helpdesk editions are supported except the community edition.
+A pretty simplified Docker Compose workflow set up a network of containers for the Faveo Helpdesk.
+All the Faveo Helpdesk editions are supported, except for the community edition.
 
 ## Usage
 ___
 
-To get started, make sure you have Docker and docker-compose installed on your system, and then clone this repository.
+Before getting started, make sure you have Docker and docker-compose installed on your system, and then clone this repository.
 
-Next, navigate in your terminal to the directory you cloned this, and give the executable permission to faveo-run.sh bash script.
+Next, navigate to your terminal to the directory you cloned this, and give the executable permission to faveo-run.sh bash script.
+
 
 ```sh
 chmod +x faveo-run.sh
@@ -17,18 +17,17 @@ chmod +x faveo-run.sh
 
 Prerequisites to run the script:
 
-1. A valid domain name fully propagated to your Server's IP.
-2. Sudo Privilege.
-3. Faveo license and Order number.
-4. Unreserved ports 80 and 443.(If it is reserved feel free to edit and change the ports of your choice in docker-copompose.yml)
-5. Operating Systems Centos 7,8 or above and Ubuntu 16,18,20.
+A valid domain name wholly propagated to your Server's IP.
+Sudo Privilege.
+Faveo license and Order number.
+Unreserved ports 80 and 443. (If it is reserved, feel free to edit and change the ports of your choice in docker-copompose.yml)
+Operating Systems Centos 7,8 or above, and Ubuntu 16,18,20.
 
-Complete the below steps to get the Containers up.
+To get the Containers up and running, follow the instructions below.
 
 Run the script "faveo-run.sh" by passing the necessary arguments.
 
-Note: You should have a Valid domain name pointing to your public IP. Since this domain name is used to obtain SSL certificates from Let's Encrypt CA and the Email is used for the same process. The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, make sure not to include the '#' character in the Order Number.
-
+Note- You should have a Valid domain name pointing to your public IP. This domain name is used to obtain SSL certificates from Let's Encrypt CA, and the mail is used for the same purpose. The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, and make sure not to include the '#' character in the Order Number.
 
 Usage:
 ```sh
@@ -38,11 +37,12 @@ Example: It should look something like this.
 ```sh
  ./faveo-run.sh -domainname berserker.tk -email berserkertest@gmail.com -license 5H876********** -orderno 8123******
 ```
-After the docker installation is completed you will be prompted with Database Credentials please copy and save them somewhere safe and a cronjob will be set to auto-renew SSL certificates from Letsencrypt
+After completing the Docker installation, you will be prompted with Database Credentials, which you should copy and keep somewhere secure, and a cron job to automatically renew SSL certificates from Let's encrypt. 
 
-Visit https://yourdomainname complete the readiness probe, input the Database Details when prompted and complete the installation.
+Visit https://yourdomainname complete the readiness probe, enter the Database information when prompted, and finish the installation.
 
-There is one final step that needs to be done in order to complete the installation. You have to edit the .env file which is generated under the Faveo root directory after completing the installation in the browser. Open terminal and navigate to the faveo-docker directory here you will find the directory "faveo" which is downloaded while running the script this directory contains all the Helpdesk codebase, inside it you need to edit the ".env" file and add REDIS_HOST=faveo-redis. The "faveo-redis" is the DNS name of the Redis container. Finally run the below command for changes to take effect.
+One final step has to be done before the installation is complete. You have to edit the .env file which is generated under the Faveo root directory, after completing the installation process in the browser. Open a terminal and navigate to the faveo-docker directory. Here, you will find the directory "faveo" which is downloaded, while running the script. This directory contains all the Helpdesk codebase inside it. You need to edit the ".env" file and add REDIS_HOST=faveo-Redis. The "faveo-redis" is the DNS name of the Redis container. Finally, run the below command for changes to take effect.
+
 ```sh
 	docker-compose down && docker-compose up -d
 ```
