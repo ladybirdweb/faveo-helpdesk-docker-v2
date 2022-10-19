@@ -162,6 +162,8 @@ fi;
 
 docker rm -f apache-cert
 
+crontab -l | { cat; echo "45 2 * * 6 docker run -ti --rm -v $CUR_DIR/certbot/letsencrypt/etc/letsencrypt:/etc/letsencrypt -v $CUR_DIR/certbot/html:/data/letsencrypt --name certbot certbot/certbot certonly --webroot --email $email   --agree-tos --non-interactive  --no-eff-email --webroot-path=/data/letsencrypt -d $domainname"; } | crontab -
+
 chown -R $USER:$USER $CUR_DIR/certbot
 
 if [[ $? -eq 0 ]]; then
