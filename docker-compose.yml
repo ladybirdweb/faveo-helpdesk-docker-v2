@@ -17,7 +17,7 @@ services:
       - ${CUR_DIR}/certbot/letsencrypt/etc/letsencrypt/live/${DOMAINNAME}/fullchain.pem:/var/imported/ssl/fullchain.pem
     restart: always
   faveo-mariadb:
-    image: mariadb:10.3
+    image: mariadb:10.6
     container_name: ${DOMAINNAME}-mariadb
     volumes:
       - db-volume:/var/lib/mysql
