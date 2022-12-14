@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   faveo-apache:
-    image: ladybird/faveo-apache-v2
+    image: ladybird/faveo-apache-v3
     container_name: ${DOMAINNAME}-apache
     networks:
       faveo-network:
@@ -38,7 +38,7 @@ services:
         faveo-network:
           ipv4_address: 172.24.2.3
   faveo-supervisor:
-      image: ladybird/faveo-supervisor-v2
+      image: ladybird/faveo-supervisor-v3
       container_name: ${DOMAINNAME}-supervisor
       volumes:
         - ./${HOST_ROOT_DIR}/:/var/www/html/
