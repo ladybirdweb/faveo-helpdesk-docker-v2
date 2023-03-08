@@ -25,7 +25,7 @@ chmod +x faveo-run.sh
 Next, navigate to your terminal to the directory you cloned this, and give the executable permission to faveo-community-run.sh bash script.
 
 ```sh
-chmod +x faveo-communtiy-run.sh
+chmod +x faveo-community-run.sh
 ```
 
 ## Prerequisites to run the script:
@@ -38,7 +38,7 @@ Operating Systems Centos 7,8 or above, and Ubuntu 16,18,20.
 
 ## To get the Containers up and running, follow the instructions below.
 
-### Run the script "faveo-run.sh" by passing the necessary arguments for Faveo editions except Faveo Community Edition.
+### Run the script "faveo-run.sh" by passing the necessary arguments for Faveo Editions except Faveo Community Edition.
 
 Note- You should have a Valid domain name pointing to your public IP. This domain name is used to obtain SSL certificates from Let's Encrypt CA, and the mail is used for the same purpose. The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, and make sure not to include the '#' character in the Order Number.
 
@@ -56,11 +56,11 @@ Note- You should have a Valid domain name pointing to your public IP. This domai
 
 Usage:
 ```sh
- ./faveo-run.sh -domainname <your domainname> -email <example@email.com> 
+ ./faveo-community-run.sh -domainname <your domainname> -email <example@email.com> 
 ```
 Example: It should look something like this.
 ```sh
- ./faveo-run.sh -domainname berserker.tk -email berserkertest@gmail.com
+ ./faveo-community-run.sh -domainname berserker.tk -email berserkertest@gmail.com
 ```
 
 After completing the Docker installation, you will be prompted with Database Credentials, which you should copy and keep somewhere secure, and a cron job to automatically renew SSL certificates from Let's encrypt. 
