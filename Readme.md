@@ -12,7 +12,7 @@ Before getting started, make sure you have Docker and docker-compose installed o
 ```sh
 git clone https://github.com/ladybirdweb/faveo-helpdesk-docker-v2.git
 ```
-
+---
 ### For all Faveo Edition (excpet community edition):
 Next, navigate to your terminal to the directory you cloned this, and give the executable permission to faveo-run.sh bash script.
 
@@ -27,7 +27,7 @@ Next, navigate to your terminal to the directory you cloned this, and give the e
 ```sh
 chmod +x faveo-community-run.sh
 ```
-
+---
 ## Prerequisites to run the script:
 
 A valid domain name wholly propagated to your Server's IP.
@@ -37,7 +37,7 @@ Unreserved ports 80 and 443. (If it is reserved, feel free to edit and change th
 Operating Systems Centos 7,8 or above, and Ubuntu 16,18,20.
 
 ## To get the Containers up and running, follow the instructions below.
-
+---
 ### Run the script "faveo-run.sh" by passing the necessary arguments for Faveo Editions except Faveo Community Edition.
 
 Note- You should have a Valid domain name pointing to your public IP. This domain name is used to obtain SSL certificates from Let's Encrypt CA, and the mail is used for the same purpose. The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, and make sure not to include the '#' character in the Order Number.
@@ -62,7 +62,7 @@ Example: It should look something like this.
 ```sh
  ./faveo-community-run.sh -domainname berserker.tk -email berserkertest@gmail.com
 ```
-
+---
 After completing the Docker installation, you will be prompted with Database Credentials, which you should copy and keep somewhere secure, and a cron job to automatically renew SSL certificates from Let's encrypt. 
 
 Visit https://yourdomainname complete the readiness probe, enter the Database information when prompted, and finish the installation.
