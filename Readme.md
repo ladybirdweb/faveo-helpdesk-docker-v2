@@ -70,7 +70,7 @@ Visit https://yourdomainname complete the readiness probe, enter the Database in
 One final step has to be done before the installation is complete. You have to edit the .env file which is generated under the Faveo root directory, after completing the installation process in the browser. Open a terminal and navigate to the faveo-docker directory. Here, you will find the directory "faveo" which is downloaded, while running the script. This directory contains all the Helpdesk codebase inside it. You need to edit the ".env" file and add REDIS_HOST=faveo-Redis. The "faveo-redis" is the DNS name of the Redis container. Finally, run the below command for changes to take effect.
 
 ```sh
-	docker-compose down && docker-compose up -d
+	docker compose down && docker compose up -d
 ```
 	
 
