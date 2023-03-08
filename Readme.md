@@ -13,16 +13,16 @@ Before getting started, make sure you have Docker and docker-compose installed o
 git clone https://github.com/ladybirdweb/faveo-helpdesk-docker-v2.git
 ```
 ---
-### For all Faveo Edition (excpet community edition):
-Next, navigate to your terminal to the directory you cloned this, and give the executable permission to faveo-run.sh bash script.
 
+Next, navigate to your terminal to the directory you cloned this, and give the executable permission to bash scripts.
+
+### For all Faveo Edition (excpet community edition):
 
 ```sh
 chmod +x faveo-run.sh
 ```
 
 ### For Faveo Community Edition:
-Next, navigate to your terminal to the directory you cloned this, and give the executable permission to faveo-community-run.sh bash script.
 
 ```sh
 chmod +x faveo-community-run.sh
