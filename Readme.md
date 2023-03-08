@@ -38,7 +38,7 @@ Operating Systems Centos 7,8 or above, and Ubuntu 16,18,20.
 
 ## To get the Containers up and running, follow the instructions below.
 ---
-### Run the script "faveo-run.sh" by passing the necessary arguments for Faveo Editions except Faveo Community Edition.
+### Run the script "faveo-run.sh" by passing the necessary arguments for Faveo Editions (except Faveo Community Edition).
 
 Note- You should have a Valid domain name pointing to your public IP. This domain name is used to obtain SSL certificates from Let's Encrypt CA, and the mail is used for the same purpose. The license code and Order Number can be obtained from your Faveo Helpdesk Billing portal, and make sure not to include the '#' character in the Order Number.
 
