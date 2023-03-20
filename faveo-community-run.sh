@@ -70,7 +70,7 @@ echo $DockerVersion
 echo -e "\n";
 fi
 
-DockerComposeVersion=$(docker compose --version)
+DockerComposeVersion=$(docker compose version)
 
 if [[ $? != 0 ]]; then
 echo -e "\n";
