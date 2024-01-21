@@ -234,7 +234,7 @@ fi
 
 docker network rm ${domainname}-faveo
 
-docker network create ${domainname}-faveo --driver=bridge --subnet=172.24.2.0/16
+docker network create --subnet=172.24.2.0/16 ${domainname}-faveo --driver=bridge
 
 if [[ $? -eq 0 ]]; then
     echo " Faveo Docker Network ${domainname}-faveo Created"
