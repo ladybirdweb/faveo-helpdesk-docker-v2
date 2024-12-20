@@ -38,7 +38,7 @@ services:
         faveo-network:
           ipv4_address: 172.24.2.3
   faveo-supervisor:
-      image: ladybird/faveo-supervisor-v3:8.2
+      image: ladybird/faveo-supervisor-v3:8.2.1
       container_name: ${DOMAINNAME}-supervisor
       volumes:
         - ./${HOST_ROOT_DIR}/:/var/www/html/
