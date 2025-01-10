@@ -5,7 +5,7 @@ services:
     container_name: ${DOMAINNAME}-apache
     networks:
       faveo-network:
-         ipv4_address: 172.24.2.1
+         ipv4_address: 172.24.0.1
     ports:
       - "80:80"
       - "443:443"
@@ -23,7 +23,7 @@ services:
       - db-volume:/var/lib/mysql
     networks:
       faveo-network:
-         ipv4_address: 172.24.2.2
+         ipv4_address: 172.24.0.2
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
@@ -36,7 +36,7 @@ services:
       restart: always
       networks:
         faveo-network:
-          ipv4_address: 172.24.2.3
+          ipv4_address: 172.24.0.3
   faveo-supervisor:
       image: ladybird/faveo-supervisor-v3:8.2.1
       container_name: ${DOMAINNAME}-supervisor
@@ -49,7 +49,7 @@ services:
         - faveo-mariadb
       networks:
         faveo-network:
-          ipv4_address: 172.24.2.4
+          ipv4_address: 172.24.0.4
       restart: on-failure
 volumes:
   db-volume:
