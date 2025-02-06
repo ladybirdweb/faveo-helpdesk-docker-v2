@@ -10,13 +10,12 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./letsapache/000-default.conf:/etc/apache2/sites-available/000-default.conf
       - ./${HOST_ROOT_DIR}:/var/www/html/
-      - ${CUR_DIR}/ssl_copy/faveolocal.crt:/etc/ssl/certs/faveolocal.crt
-      - ${CUR_DIR}/ssl_copy/private.key:/etc/ssl/private/private.key
-      - ${CUR_DIR}/ssl_copy/faveorootCA.crt:/usr/local/share/ca-certificates/faveorootCA.crt
+      - ${CUR_DIR}/certbot/letsencrypt/etc/letsencrypt/live/${DOMAINNAME}/cert.pem:/var/imported/ssl/cert.pem
+      - ${CUR_DIR}/certbot/letsencrypt/etc/letsencrypt/live/${DOMAINNAME}/privkey.pem:/var/imported/ssl/privkey.pem
+      - ${CUR_DIR}/certbot/letsencrypt/etc/letsencrypt/live/${DOMAINNAME}/fullchain.pem:/var/imported/ssl/fullchain.pem
     restart: always
-    
   faveo-mariadb:
     image: mariadb:10.6
     container_name: ${DOMAINNAME}-mariadb
